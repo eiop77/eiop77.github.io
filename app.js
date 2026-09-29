@@ -940,9 +940,8 @@ function checkURLHash() {
         window.location.hash;
 
     if (
-        !hash.startsWith("#NMS1.")
+        !hash.startsWith("#NMS2.")
     ) {
-
         return;
     }
 
@@ -950,7 +949,6 @@ function checkURLHash() {
         window.location.href
     );
 }
-
 
 /* =========================================================
    목표 숨기기
