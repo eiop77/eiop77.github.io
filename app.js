@@ -388,7 +388,6 @@ const startButton =
 const nextPlayerButton =
     document.getElementById("nextPlayerButton");
 
-
 const hideObjectiveButton =
     document.getElementById("hideObjectiveButton");
 
