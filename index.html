@@ -196,4 +196,81 @@
 
         <button
             id="hideObjectiveButton"
+            class="primary-button"
+        >
+            목표 숨기기
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     QR 스캐너 화면
+========================================== -->
+
+<section
+    id="scannerScreen"
+    class="screen hidden"
+>
+
+    <div class="card">
+
+        <h2>
+            QR 코드 스캔
+        </h2>
+
+        <p class="description">
+            개인 목표 QR 코드를 스캔하세요.
+        </p>
+
+        <div
+            id="reader"
+            class="reader"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     오류 화면
+========================================== -->
+
+<section
+    id="errorScreen"
+    class="screen hidden"
+>
+
+    <div class="card">
+
+        <h2>
+            오류
+        </h2>
+
+        <p
+            id="errorMessage"
+            class="error-message"
+        >
+            QR 코드를 처리할 수 없습니다.
+        </p>
+
+        <button
+            id="errorBackButton"
+            class="primary-button"
+        >
+            처음으로
+        </button>
+
+    </div>
+
+</section>
 ```
+
+</div>
+
+</body>
+
+</html>
