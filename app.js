@@ -388,8 +388,6 @@ const startButton =
 const nextPlayerButton =
     document.getElementById("nextPlayerButton");
 
-const previousPlayerButton =
-    document.getElementById("previousPlayerButton");
 
 const hideObjectiveButton =
     document.getElementById("hideObjectiveButton");
@@ -672,18 +670,6 @@ startButton.addEventListener(
 /* =========================================================
    다음 플레이어
    ========================================================= */
-
-previousPlayerButton.addEventListener(
-    "click",
-    () => {
-
-        if (currentPlayerIndex > 0) {
-            currentPlayerIndex--;
-            showPlayerQR();
-        }
-
-    }
-);
 
 
 nextPlayerButton.addEventListener(
