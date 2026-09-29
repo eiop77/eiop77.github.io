@@ -2,65 +2,342 @@
 
 
 /* =========================================================
-   네메시스 커스텀 목표 데이터
+   NEMESIS CUSTOM OBJECTIVES
+   =========================================================
+
+   image:
+   나중에 실제 이미지 파일 경로를 넣으면 됩니다.
+
+   예:
+   image: "images/objective-01.jpg"
+
+   현재는 모든 카드에 임시 이미지가 표시됩니다.
    ========================================================= */
 
 const OBJECTIVES = [
 
     {
-        id: "survive",
-        title: "생존",
-        text:
-            "게임 종료 시점에 생존해 있어야 한다."
+        id: 1,
+        title: "웨이랜드 직속 해결사",
+        image: "",
+        text: `
+            CEO는 영생의 목표를 위해 당신에게 미션을 내렸습니다.
+
+            에일리언 시체 혹은 에일리언 알, 혹은 유충을
+            가진 사람 중 하나를 지구로 가져와야 합니다.
+        `
     },
 
     {
-        id: "escape",
-        title: "탈출",
-        text:
-            "게임 종료 시 탈출선에 탑승하여 네메시스를 탈출해야 한다."
+        id: 2,
+        title: "함께하는 동안 싹튼 감정",
+        image: "",
+        text: `
+            내 다음 후플레이어와 당신은 지구로 돌아가야 합니다.
+
+            만약 내 다음 후플레이어가 사망시
+            후플레이어 시체를 갖고 지구로 돌아가야 합니다.
+        `
     },
 
     {
-        id: "research",
-        title: "연구 데이터",
-        text:
-            "연구실에서 연구 데이터를 확보하고 네메시스를 탈출해야 한다."
+        id: 3,
+        title: "웨이랜드 보안 책임자",
+        image: "",
+        text: `
+            인트루더에 대한 많은 정보가 새어나가선 안됩니다.
+
+            당신을 제외한 모든 인원이 지구로 돌아가지 못하거나
+            사망해야 합니다.
+
+            당신은 지구로 돌아가야 합니다.
+        `
     },
 
     {
-        id: "sample",
-        title: "표본 확보",
-        text:
-            "게임 종료 전에 네메시스에서 지정된 표본을 확보해야 한다."
+        id: 4,
+        title: "프로메테우스 엘리자베스 쇼 박사",
+        image: "",
+        text: `
+            인간을 만든게 누구고 인트루더는 무엇이고
+            어디서 왔는지 알기 위해 떠납니다.
+
+            인트루더 약점을 2개 이상 파악된 상태로
+            당신은 심우주로 가야 합니다.
+        `
     },
 
     {
-        id: "destroy",
-        title: "파괴",
-        text:
-            "네메시스가 지구에 도착하기 전에 지정된 목표를 파괴해야 한다."
+        id: 5,
+        title: "인트루더 공포 숭배자",
+        image: "",
+        text: `
+            여왕이 죽지 않고 우주선이 파괴되지 않아야 합니다.
+
+            당신은 지구로 돌아가야 합니다.
+        `
     },
 
     {
-        id: "infected",
-        title: "감염",
-        text:
-            "게임 종료 시 감염된 상태로 생존해 있어야 한다."
+        id: 7,
+        title: "직접 확인해야하는 수수께끼 인물",
+        image: "",
+        text: `
+            당신은 가장 마지막으로 좌표를 확인 혹은 수정하거나
+            남이 만진 엔진을 수리 액션(고장도 가능) 해야 합니다.
+
+            지구 혹은 화성으로 가야 합니다.
+        `
     },
 
     {
-        id: "coordinates",
-        title: "좌표 확보",
-        text:
-            "게임 종료 전에 지정된 좌표 정보를 확보해야 한다."
+        id: 8,
+        title: "우주 상인",
+        image: "",
+        text: `
+            자의에 의해서든 타인에 의해서든
+            당신과의 거래가 2번 이루어져야 합니다.
+
+            아이템 혹은 물체의 실제 거래가 이루어져야 합니다.
+
+            그리고 지구로 돌아가야 합니다.
+        `
     },
 
     {
-        id: "crew",
-        title: "승무원 생존",
-        text:
-            "지정된 승무원이 게임 종료 시 생존해 있어야 한다."
+        id: 9,
+        title: "파멸의 씨앗",
+        image: "",
+        text: `
+            인트루더 알을 가진채로
+            당신은 지구 혹은 화성에 가야 합니다.
+        `
+    },
+
+    {
+        id: 10,
+        title: "동면 속 기적적 생존자",
+        image: "",
+        text: `
+            당신은 반드시 동면을 통해 지구에 도착해야 합니다.
+
+            동면 상태로 지구에 도착시
+            당신은 스캐너 과정을 생략하고 승리합니다.
+        `
+    },
+
+    {
+        id: 11,
+        title: "동료애가 깊은 사람",
+        image: "",
+        text: `
+            당신은 다른 플레이어 1명 이상이 구명정으로 탈출한 후에
+            구명정으로 탈출하거나,
+
+            다른 플레이어 1명 이상이 동면한 후에
+            동면해서 지구로 가야 합니다.
+        `
+    },
+
+    {
+        id: 12,
+        title: "기억상실증 - 스스로를 믿지 못하는 사람",
+        image: "",
+        text: `
+            퀘스트 카드 2개를 클리어하거나
+
+            2개를 클리어하지 않고 지구로 돌아가야 합니다.
+        `
+    },
+
+    {
+        id: 13,
+        title: "유능한 기술자",
+        image: "",
+        text: `
+            고장난 방을 2개 이상 수리 후
+            지구로 돌아가야 합니다.
+        `
+    },
+
+    {
+        id: 14,
+        title: "인트루더 킬러",
+        image: "",
+        text: `
+            성체 이상 인트루더 1마리 사살 관여 후
+            (피해 1 이상 입힘),
+
+            지구로 귀환.
+        `
+    },
+
+    {
+        id: 15,
+        title: "지구에 묻어주고 싶은 전우",
+        image: "",
+        text: `
+            당신이 죽으면 이 미션을 공개합니다.
+
+            당신의 시체를 다른 플레이어가 갖고
+            지구로 귀환한다면 당신은 승리합니다.
+
+            당신의 시체를 든 플레이어는 팔 부상이 응급처치 됩니다.
+            (팔 부상이 두 개라면 응급처치되지 않고
+            당신을 들 수 없습니다.)
+
+            죽지 않았다면 지구로 귀환해야 합니다.
+        `
+    },
+
+    {
+        id: 16,
+        title: "생물학 전문가",
+        image: "",
+        text: `
+            인트루더 약점 2개 이상 공개된 상태로
+            지구 돌아가야 합니다.
+        `
+    },
+
+    {
+        id: 17,
+        title: "역경 속 유능한 사람",
+        image: "",
+        text: `
+            다음 중 하나를 수행해야 합니다.
+
+            • 인트루더 약점 공개 1회
+            • 엔진 확인 1회
+            • 좌표 확인 1회
+
+            그리고 지구로 돌아가야 합니다.
+        `
+    },
+
+    {
+        id: 18,
+        title: "우주선 책임자",
+        image: "",
+        text: `
+            우주선이 파괴되어선 안되며
+            당신은 생존해야 합니다.
+
+            어느 좌표로 가든 상관 없습니다.
+        `
+    },
+
+    {
+        id: 19,
+        title: "이기적인 생존자",
+        image: "",
+        text: `
+            구명정 탈출시 탑승석 한 칸을 비워두고 탈출하거나
+
+            동면시 마지막 동면 플레이어가 아니라면
+            승리합니다.
+        `
+    },
+
+    {
+        id: 20,
+        title: "장비 전문가",
+        image: "",
+        text: `
+            아이템 빨강 / 노랑 / 초록 색상 중
+            1개 이상 아이템 보유 상태로
+            지구로 돌아가야 합니다.
+        `
+    },
+
+    {
+        id: 21,
+        title: "화성 개척자",
+        image: "",
+        text: `
+            지구로 귀환해야 하는 목표의 다른 플레이어와
+            당신은 화성에 도착시 모두 승리합니다.
+
+            단, 오염검사는 거쳐야 합니다.
+        `
+    },
+
+    {
+        id: 22,
+        title: "1급 범죄자",
+        image: "",
+        text: `
+            당신은 지구 외의 장소에 도착한다면 승리합니다.
+        `
+    },
+
+    {
+        id: 23,
+        title: "프로메테우스 커버넌트 데이빗",
+        image: "",
+        text: `
+            당신은 안드로이드입니다.
+
+            당신이 감염으로 사망할 위기일 때
+            이 카드를 공개합니다.
+
+            공개 이후부터 감염으로 사망하지 않습니다.
+
+            몸에 붙은 유충은 모두 현재 장소에 배치합니다.
+            유충의 공격대상이 항상 당신에서
+            같은 칸에 있는 가까운 순서 플레이어로 변경됩니다.
+
+            당신은 초공간도약으로 사망하지 않습니다.
+
+            다른 플레이어 한 명 이상이 동면해야 합니다.
+
+            우주선이 파괴되어선 안됩니다.
+
+            당신이 우주선 안에서 활동 가능한
+            (구명정 X, 동면 X) 마지막 플레이어면서
+            자폭 시퀀스가 해제 가능한 상태라면
+
+            그 시점에서 자폭 시퀀스는 무효가 되고
+            게임은 종료됩니다.
+
+            당신은 승리합니다.
+
+            이외의 경우, 당신은 패배합니다.
+        `
+    },
+
+    {
+        id: 24,
+        title: "로물루스 앤디",
+        image: "",
+        text: `
+            당신은 안드로이드입니다.
+
+            당신이 감염으로 사망할 위기일 때
+            이 카드를 공개합니다.
+
+            공개 이후부터 감염으로 사망하지 않고
+            어떠한 경우에도 유충을 더 이상 받지 않습니다.
+
+            당신은 초공간도약으로 사망하지 않습니다.
+
+            당신의 후순서 플레이어가 생존
+            (후순서 플레이어의 미션은 상관없음)한다면
+
+            당신이 사망하더라도 당신은 승리합니다.
+        `
+    },
+
+    {
+        id: 25,
+        title: "커버넌트 대니얼스",
+        image: "",
+        text: `
+            구명정을 통해 지구로 돌아가야 합니다.
+
+            혹은 우주선 안에서 활동 가능한 마지막 플레이어일 때
+            동면해서 지구로 돌아가야 합니다.
+        `
     }
 
 ];
@@ -132,7 +409,6 @@ function showScreen(screen) {
 
 /* =========================================================
    배열 섞기
-   Fisher-Yates Shuffle
    ========================================================= */
 
 function shuffle(array) {
@@ -163,23 +439,13 @@ function shuffle(array) {
 
 
 /* =========================================================
-   목표 생성
+   목표 배정
    ========================================================= */
 
 function createObjectives(playerCount) {
 
-    /*
-     * 목표를 랜덤하게 섞는다.
-     */
-
     const shuffled =
         shuffle(OBJECTIVES);
-
-
-    /*
-     * 현재 예제에서는
-     * 플레이어 수만큼 목표를 뽑는다.
-     */
 
     assignedPlayers = [];
 
@@ -203,20 +469,10 @@ function createObjectives(playerCount) {
 
 
 /* =========================================================
-   QR에 넣을 데이터
+   QR 데이터
    ========================================================= */
 
 function createQRData(player) {
-
-    /*
-     * QR 코드에 넣을 데이터
-     *
-     * 목표 원문을 직접 넣는 대신
-     * Base64 형태로 변환한다.
-     *
-     * 나중에 여기 부분을 AES 암호화로
-     * 변경할 수 있다.
-     */
 
     const payload = {
 
@@ -234,23 +490,11 @@ function createQRData(player) {
 
     };
 
-
     const json =
         JSON.stringify(payload);
 
-
     const encoded =
         base64Encode(json);
-
-
-    /*
-     * URL fragment를 이용한다.
-     *
-     * 예:
-     *
-     * https://example.github.io/
-     * #NMS1.eyJ0eXBlIjoi...
-     */
 
     const url =
         window.location.origin +
@@ -258,13 +502,12 @@ function createQRData(player) {
         "#NMS1." +
         encoded;
 
-
     return url;
 }
 
 
 /* =========================================================
-   UTF-8 Base64
+   Base64
    ========================================================= */
 
 function base64Encode(text) {
@@ -325,11 +568,6 @@ function showQRCode() {
 
     showScreen(qrScreen);
 
-
-    /*
-     * 플레이어 번호
-     */
-
     const playerNumber =
         currentPlayerIndex + 1;
 
@@ -343,45 +581,24 @@ function showQRCode() {
     ).textContent =
         playerNumber;
 
-
-    /*
-     * 진행률
-     */
-
     document.getElementById(
         "progressText"
     ).textContent =
         `${playerNumber} / ${assignedPlayers.length}`;
-
-
-    /*
-     * QR 초기화
-     */
 
     const qrContainer =
         document.getElementById("qrcode");
 
     qrContainer.innerHTML = "";
 
-
-    /*
-     * QR 데이터 생성
-     */
-
     const qrData =
         createQRData(
             assignedPlayers[currentPlayerIndex]
         );
 
-
-    /*
-     * QR 생성
-     */
-
     new QRCode(
         qrContainer,
         {
-
             text:
                 qrData,
 
@@ -393,14 +610,8 @@ function showQRCode() {
 
             correctLevel:
                 QRCode.CorrectLevel.H
-
         }
     );
-
-
-    /*
-     * 마지막 플레이어
-     */
 
     if (
         currentPlayerIndex ===
@@ -414,13 +625,12 @@ function showQRCode() {
 
         nextPlayerButton.textContent =
             "다음 플레이어 →";
-
     }
 }
 
 
 /* =========================================================
-   시작
+   게임 시작
    ========================================================= */
 
 startButton.addEventListener(
@@ -432,15 +642,22 @@ startButton.addEventListener(
                 playerCount.value
             );
 
+        if (
+            count > OBJECTIVES.length
+        ) {
+
+            alert(
+                `현재 등록된 목표는 ${OBJECTIVES.length}개입니다.`
+            );
+
+            return;
+        }
 
         createObjectives(count);
 
-
         currentPlayerIndex = 0;
 
-
         showQRCode();
-
     }
 );
 
@@ -465,21 +682,15 @@ nextPlayerButton.addEventListener(
             return;
         }
 
-
-        /*
-         * 마지막 플레이어까지 완료
-         */
-
         alert(
             "모든 플레이어에게 목표가 전달되었습니다."
         );
-
     }
 );
 
 
 /* =========================================================
-   목표 표시
+   목표 카드 표시
    ========================================================= */
 
 function showObjective(data) {
@@ -489,22 +700,121 @@ function showObjective(data) {
     ).textContent =
         `PLAYER ${data.player}`;
 
-
     document.getElementById(
         "objectiveTitle"
     ).textContent =
         data.objective.title;
 
-
     document.getElementById(
         "objectiveText"
-    ).textContent =
-        data.objective.text;
+    ).innerHTML =
+        formatObjectiveText(
+            data.objective.text
+        );
+
+
+    /*
+     * 이미지 처리
+     */
+
+    const image =
+        document.getElementById(
+            "objectiveImage"
+        );
+
+    const placeholder =
+        document.getElementById(
+            "objectiveImagePlaceholder"
+        );
+
+
+    if (
+        data.objective.image &&
+        data.objective.image.trim() !== ""
+    ) {
+
+        image.src =
+            data.objective.image;
+
+        image.classList.remove("hidden");
+
+        placeholder.classList.add(
+            "hidden"
+        );
+
+    } else {
+
+        image.classList.add(
+            "hidden"
+        );
+
+        placeholder.classList.remove(
+            "hidden"
+        );
+    }
 
 
     showScreen(
         objectiveScreen
     );
+}
+
+
+/* =========================================================
+   목표 텍스트 포맷
+   ========================================================= */
+
+function formatObjectiveText(text) {
+
+    return text
+        .trim()
+        .split("\n")
+        .map(line => {
+
+            const trimmed =
+                line.trim();
+
+            if (
+                trimmed === ""
+            ) {
+
+                return "<br>";
+            }
+
+            if (
+                trimmed.startsWith("•")
+            ) {
+
+                return `
+                    <div class="objectiveBullet">
+                        ${escapeHTML(trimmed)}
+                    </div>
+                `;
+            }
+
+            return `
+                <p>
+                    ${escapeHTML(trimmed)}
+                </p>
+            `;
+
+        })
+        .join("");
+}
+
+
+/* =========================================================
+   HTML escape
+   ========================================================= */
+
+function escapeHTML(text) {
+
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 
@@ -516,43 +826,31 @@ function processQRData(url) {
 
     try {
 
-        /*
-         * QR에 들어있는 URL에서
-         * # 뒤의 데이터를 가져온다.
-         */
+        const parsedURL =
+            new URL(url);
 
         const hash =
-            new URL(url)
-                .hash;
-
+            parsedURL.hash;
 
         if (
             !hash.startsWith("#NMS1.")
         ) {
 
             throw new Error(
-                "네메시스 QR 코드가 아닙니다."
+                "네메시스 목표 QR 코드가 아닙니다."
             );
         }
-
 
         const encoded =
             hash.substring(
                 "#NMS1.".length
             );
 
-
         const json =
             base64Decode(encoded);
 
-
         const data =
             JSON.parse(json);
-
-
-        /*
-         * 데이터 검증
-         */
 
         if (
             data.type !==
@@ -563,7 +861,6 @@ function processQRData(url) {
                 "잘못된 목표 데이터입니다."
             );
         }
-
 
         showObjective(data);
 
@@ -585,14 +882,13 @@ function processQRData(url) {
 
 
 /* =========================================================
-   URL Fragment 자동 처리
+   URL Hash 확인
    ========================================================= */
 
 function checkURLHash() {
 
     const hash =
         window.location.hash;
-
 
     if (
         !hash.startsWith("#NMS1.")
@@ -601,12 +897,9 @@ function checkURLHash() {
         return;
     }
 
-
-    const fakeUrl =
-        window.location.href;
-
-
-    processQRData(fakeUrl);
+    processQRData(
+        window.location.href
+    );
 }
 
 
@@ -619,9 +912,9 @@ hideObjectiveButton.addEventListener(
     () => {
 
         /*
-         * 목표를 다시 보이지 않게 한다.
-         *
-         * QR을 다시 찍으면 다시 볼 수 있다.
+         * 카메라 화면으로 돌아갑니다.
+         * 다시 자신의 QR을 찍으면
+         * 목표를 볼 수 있습니다.
          */
 
         showScreen(
@@ -629,7 +922,6 @@ hideObjectiveButton.addEventListener(
         );
 
         startScanner();
-
     }
 );
 
@@ -643,21 +935,19 @@ let scanner = null;
 
 function startScanner() {
 
-    /*
-     * 이미 실행 중이면 종료
-     */
-
     if (scanner) {
 
         try {
+
             scanner.clear();
+
         }
         catch (error) {
+
             console.log(error);
+
         }
-
     }
-
 
     scanner =
         new Html5Qrcode("reader");
@@ -679,29 +969,26 @@ function startScanner() {
                     width: 250,
                     height: 250
                 }
-
         },
 
         decodedText => {
 
-            scanner.stop()
+            scanner
+                .stop()
                 .catch(
                     () => {}
                 );
 
-
             processQRData(
                 decodedText
             );
-
         },
 
-        errorMessage => {
+        () => {
 
             /*
-             * QR 탐색 중 발생하는
-             * 일반적인 오류이므로
-             * 화면에 표시하지 않는다.
+             * QR 검색 중 발생하는
+             * 일반 오류는 무시
              */
 
         }
@@ -715,13 +1002,12 @@ function startScanner() {
             "카메라를 사용할 수 없습니다.\n" +
             "브라우저의 카메라 권한을 확인해주세요."
         );
-
     });
 }
 
 
 /* =========================================================
-   에러 화면
+   오류 화면
    ========================================================= */
 
 errorBackButton.addEventListener(
@@ -731,23 +1017,17 @@ errorBackButton.addEventListener(
         showScreen(
             setupScreen
         );
-
     }
 );
 
 
 /* =========================================================
-   페이지 최초 실행
+   페이지 시작
    ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     () => {
-
-        /*
-         * QR을 찍어서 들어온 경우
-         * 자동으로 목표를 표시한다.
-         */
 
         checkURLHash();
 
