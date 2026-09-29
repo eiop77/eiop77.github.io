@@ -976,12 +976,6 @@ function checkURLHash() {
         window.location.hash;
 
 
-    alert(
-        "현재 HASH = " +
-        hash
-    );
-
-
     if (
         !hash.startsWith("#NMS2.")
     ) {
