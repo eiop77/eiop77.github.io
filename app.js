@@ -680,7 +680,7 @@ nextPlayerButton.addEventListener(
             assignedPlayers.length - 1
         ) {
             currentPlayerIndex++;
-            showPlayerQR();
+            showQRCode();
         }
 
     }
