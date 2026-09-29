@@ -947,11 +947,6 @@ function checkURLHash() {
     }
 
 
-    alert(
-        "NMS2 확인 완료.\n" +
-        "QR 데이터 처리를 시작합니다."
-    );
-
 
     processQRData(
         window.location.href
