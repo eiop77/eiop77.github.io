@@ -79,6 +79,15 @@ const OBJECTIVES = [
     },
 
     {
+        id: 6,
+        title: "노멀 플레이어",
+        image: "",
+        text: `
+            생존해서 지구로 돌아가야합니다.
+        `
+    },
+   
+    {
         id: 7,
         title: "직접 확인해야하는 수수께끼 인물",
         image: "",
