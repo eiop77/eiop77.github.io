@@ -480,22 +480,17 @@ function createObjectives(playerCount) {
 /* =========================================================
    QR 데이터
    ========================================================= */
-
 function createQRData(player) {
 
     const payload = {
 
-        type:
-            "NEMESIS_OBJECTIVE",
+        type: "NEMESIS_OBJECTIVE",
 
-        version:
-            1,
+        version: 2,
 
-        player:
-            player.player,
+        player: player.player,
 
-        objective:
-            player.objective
+        objectiveId: player.objective.id
 
     };
 
@@ -508,7 +503,7 @@ function createQRData(player) {
     const url =
         window.location.origin +
         window.location.pathname +
-        "#NMS1." +
+        "#NMS2." +
         encoded;
 
     return url;
