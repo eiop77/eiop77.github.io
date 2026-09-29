@@ -825,7 +825,6 @@ function escapeHTML(text) {
 /* =========================================================
    QR 데이터 처리
    ========================================================= */
-
 function processQRData(url) {
 
     try {
@@ -836,25 +835,31 @@ function processQRData(url) {
         const hash =
             parsedURL.hash;
 
+
         if (
-            !hash.startsWith("#NMS1.")
+            !hash.startsWith("#NMS2.")
         ) {
 
             throw new Error(
                 "네메시스 목표 QR 코드가 아닙니다."
             );
+
         }
+
 
         const encoded =
             hash.substring(
-                "#NMS1.".length
+                "#NMS2.".length
             );
+
 
         const json =
             base64Decode(encoded);
 
+
         const data =
             JSON.parse(json);
+
 
         if (
             data.type !==
@@ -864,24 +869,64 @@ function processQRData(url) {
             throw new Error(
                 "잘못된 목표 데이터입니다."
             );
+
         }
 
-        showObjective(data);
+
+        /*
+         * QR에는 목표 전체 내용이 들어있지 않습니다.
+         *
+         * 목표 ID를 이용해서
+         * 현재 휴대폰의 OBJECTIVES에서
+         * 실제 목표를 찾습니다.
+         */
+
+        const objective =
+            OBJECTIVES.find(
+                item =>
+                    item.id ===
+                    data.objectiveId
+            );
+
+
+        if (!objective) {
+
+            throw new Error(
+                "해당 목표를 찾을 수 없습니다."
+            );
+
+        }
+
+
+        showObjective({
+
+            player:
+                data.player,
+
+            objective:
+                objective
+
+        });
 
     }
+
     catch (error) {
 
         console.error(error);
+
 
         document.getElementById(
             "errorMessage"
         ).textContent =
             error.message;
 
+
         showScreen(
             errorScreen
         );
+
     }
+
 }
 
 
