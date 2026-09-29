@@ -943,10 +943,6 @@ function checkURLHash() {
         !hash.startsWith("#NMS2.")
     ) {
 
-        alert(
-            "NMS2로 시작하지 않습니다."
-        );
-
         return;
     }
 
