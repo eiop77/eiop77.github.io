@@ -119,34 +119,90 @@
          (테스트/QR 없는 경우)
     ========================== -->
 
-    <section id="objectiveScreen" class="screen hidden">
+<section id="objectiveScreen" class="screen hidden">
 
-        <div class="playerNumber">
-            PRIVATE OBJECTIVE
+    <div class="playerNumber">
+        PRIVATE OBJECTIVE
+    </div>
+
+    <div class="objectiveCard">
+
+        <!-- 플레이어 번호 -->
+
+        <div id="objectivePlayer"
+             class="objectivePlayer">
+            PLAYER 1
         </div>
 
-        <div class="card">
 
-            <div id="objectivePlayer"
-                 class="objectivePlayer">
-                PLAYER 1
+        <!-- 이미지 -->
+
+        <div class="objectiveImageArea">
+
+            <!-- 실제 이미지가 있을 경우 -->
+
+            <img
+                id="objectiveImage"
+                class="objectiveImage hidden"
+                src=""
+                alt="Custom Objective"
+            >
+
+
+            <!-- 임시 이미지 -->
+
+            <div
+                id="objectiveImagePlaceholder"
+                class="objectiveImagePlaceholder"
+            >
+
+                <div class="placeholderIcon">
+                    👽
+                </div>
+
+                <div class="placeholderText">
+                    OBJECTIVE IMAGE
+                </div>
+
+                <div class="placeholderSubText">
+                    이미지 준비 중
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 카드 제목 -->
+
+        <div class="objectiveContent">
+
+            <div class="objectiveLabel">
+                PERSONAL OBJECTIVE
             </div>
 
             <h2 id="objectiveTitle">
                 개인 목표
             </h2>
 
-            <div id="objectiveText"
-                 class="objectiveText">
+            <div
+                id="objectiveText"
+                class="objectiveText">
             </div>
-
-            <button id="hideObjectiveButton">
-                🔒 목표 숨기기
-            </button>
 
         </div>
 
-    </section>
+
+        <button
+            id="hideObjectiveButton">
+
+            🔒 목표 숨기기
+
+        </button>
+
+    </div>
+
+</section>
 
 
     <!-- =========================
