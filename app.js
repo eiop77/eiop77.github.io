@@ -388,6 +388,9 @@ const startButton =
 const nextPlayerButton =
     document.getElementById("nextPlayerButton");
 
+const previousPlayerButton =
+    document.getElementById("previousPlayerButton");
+
 const hideObjectiveButton =
     document.getElementById("hideObjectiveButton");
 
@@ -670,6 +673,19 @@ startButton.addEventListener(
    다음 플레이어
    ========================================================= */
 
+previousPlayerButton.addEventListener(
+    "click",
+    () => {
+
+        if (currentPlayerIndex > 0) {
+            currentPlayerIndex--;
+            showPlayerQR();
+        }
+
+    }
+);
+
+
 nextPlayerButton.addEventListener(
     "click",
     () => {
@@ -678,17 +694,10 @@ nextPlayerButton.addEventListener(
             currentPlayerIndex <
             assignedPlayers.length - 1
         ) {
-
             currentPlayerIndex++;
-
-            showQRCode();
-
-            return;
+            showPlayerQR();
         }
 
-        alert(
-            "모든 플레이어에게 목표가 전달되었습니다."
-        );
     }
 );
 
