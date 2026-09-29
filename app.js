@@ -825,10 +825,11 @@ function escapeHTML(text) {
 /* =========================================================
    QR 데이터 처리
    ========================================================= */
-
 function processQRData(url) {
 
     try {
+
+        alert("1. QR 데이터 처리 시작");
 
         const parsedURL =
             new URL(url);
@@ -836,13 +837,19 @@ function processQRData(url) {
         const hash =
             parsedURL.hash;
 
+        alert(
+            "2. HASH 확인\n\n" +
+            hash.substring(0, 50) +
+            "..."
+        );
+
 
         if (
             !hash.startsWith("#NMS2.")
         ) {
 
             throw new Error(
-                "네메시스 목표 QR 코드가 아닙니다."
+                "NMS2 형식이 아닙니다.\n\nHASH:\n" + hash
             );
 
         }
@@ -854,12 +861,31 @@ function processQRData(url) {
             );
 
 
+        alert(
+            "3. Base64 데이터 확인\n\n" +
+            encoded.substring(0, 50) +
+            "..."
+        );
+
+
         const json =
             base64Decode(encoded);
 
 
+        alert(
+            "4. Base64 해독 성공\n\n" +
+            json
+        );
+
+
         const data =
             JSON.parse(json);
+
+
+        alert(
+            "5. JSON 해석 성공\n\n" +
+            JSON.stringify(data, null, 2)
+        );
 
 
         if (
@@ -868,19 +894,13 @@ function processQRData(url) {
         ) {
 
             throw new Error(
-                "잘못된 목표 데이터입니다."
+                "잘못된 목표 데이터입니다.\n\n" +
+                "type = " +
+                data.type
             );
 
         }
 
-
-        /*
-         * QR에는 목표 전체 내용이 들어있지 않습니다.
-         *
-         * 목표 ID를 이용해서
-         * 현재 휴대폰의 OBJECTIVES에서
-         * 실제 목표를 찾습니다.
-         */
 
         const objective =
             OBJECTIVES.find(
@@ -893,10 +913,20 @@ function processQRData(url) {
         if (!objective) {
 
             throw new Error(
-                "해당 목표를 찾을 수 없습니다."
+                "해당 목표를 찾을 수 없습니다.\n\n" +
+                "QR objectiveId = " +
+                data.objectiveId
             );
 
         }
+
+
+        alert(
+            "6. 목표 찾기 성공\n\n" +
+            "PLAYER = " + data.player + "\n" +
+            "OBJECTIVE ID = " + data.objectiveId + "\n" +
+            "TITLE = " + objective.title
+        );
 
 
         showObjective({
@@ -914,6 +944,11 @@ function processQRData(url) {
     catch (error) {
 
         console.error(error);
+
+        alert(
+            "QR 처리 오류\n\n" +
+            error.message
+        );
 
 
         document.getElementById(
@@ -937,15 +972,37 @@ function processQRData(url) {
 
 function checkURLHash() {
 
-    const hash = window.location.hash;
+    const hash =
+        window.location.hash;
 
-    alert("현재 HASH = " + hash);
 
-    if (!hash.startsWith("#NMS2.")) {
+    alert(
+        "현재 HASH = " +
+        hash
+    );
+
+
+    if (
+        !hash.startsWith("#NMS2.")
+    ) {
+
+        alert(
+            "NMS2로 시작하지 않습니다."
+        );
+
         return;
     }
 
-    processQRData(window.location.href);
+
+    alert(
+        "NMS2 확인 완료.\n" +
+        "QR 데이터 처리를 시작합니다."
+    );
+
+
+    processQRData(
+        window.location.href
+    );
 }
 
 
