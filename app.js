@@ -936,18 +936,15 @@ function processQRData(url) {
 
 function checkURLHash() {
 
-    const hash =
-        window.location.hash;
+    const hash = window.location.hash;
 
-    if (
-        !hash.startsWith("#NMS2.")
-    ) {
+    alert("현재 HASH = " + hash);
+
+    if (!hash.startsWith("#NMS2.")) {
         return;
     }
 
-    processQRData(
-        window.location.href
-    );
+    processQRData(window.location.href);
 }
 
 /* =========================================================
