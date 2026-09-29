@@ -829,20 +829,11 @@ function processQRData(url) {
 
     try {
 
-        alert("1. QR 데이터 처리 시작");
-
         const parsedURL =
             new URL(url);
 
         const hash =
             parsedURL.hash;
-
-        alert(
-            "2. HASH 확인\n\n" +
-            hash.substring(0, 50) +
-            "..."
-        );
-
 
         if (
             !hash.startsWith("#NMS2.")
@@ -861,31 +852,12 @@ function processQRData(url) {
             );
 
 
-        alert(
-            "3. Base64 데이터 확인\n\n" +
-            encoded.substring(0, 50) +
-            "..."
-        );
-
-
         const json =
             base64Decode(encoded);
 
 
-        alert(
-            "4. Base64 해독 성공\n\n" +
-            json
-        );
-
-
         const data =
             JSON.parse(json);
-
-
-        alert(
-            "5. JSON 해석 성공\n\n" +
-            JSON.stringify(data, null, 2)
-        );
 
 
         if (
@@ -919,15 +891,6 @@ function processQRData(url) {
             );
 
         }
-
-
-        alert(
-            "6. 목표 찾기 성공\n\n" +
-            "PLAYER = " + data.player + "\n" +
-            "OBJECTIVE ID = " + data.objectiveId + "\n" +
-            "TITLE = " + objective.title
-        );
-
 
         showObjective({
 
