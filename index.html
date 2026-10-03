@@ -1,275 +1,109 @@
 <!DOCTYPE html>
-
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEMESIS Custom Objectives</title>
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <link rel="stylesheet" href="style_v3.css">
 
-<title>NEMESIS Custom Objectives</title>
+    <!-- QR 생성 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-<link
-    rel="stylesheet"
-    href="style.css"
->
+    <!-- QR 스캔 -->
+    <script src="https://unpkg.com/html5-qrcode" defer></script>
 
-<!-- QR 생성 -->
-<script
-    src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
-</script>
-
-<!-- QR 스캔 -->
-<script
-    src="https://unpkg.com/html5-qrcode"
-    defer>
-</script>
-
-<!-- NEMESIS 앱 -->
-<script
-    src="app.js"
-    defer>
-</script>
-
-
+    <!-- NEMESIS 앱 -->
+    <script src="app_v3.js" defer></script>
 </head>
 
 <body>
-
 <div class="app">
 
+    <!-- 시작 화면 -->
+    <section id="setupScreen" class="screen">
+        <div class="logo">NEMESIS</div>
+        <div class="subtitle">CUSTOM OBJECTIVES</div>
 
-<!-- =========================================
-     시작 화면
-========================================== -->
+        <div class="card setup-card">
+            <h2>게임 준비</h2>
+            <p class="description">
+                플레이어마다 개인 목표 2개를 무작위로 배정합니다.<br>
+                첫 인트루더 조우 시 둘 중 하나를 선택합니다.
+            </p>
 
-<section
-    id="setupScreen"
-    class="screen"
->
+            <label for="playerCount">플레이어 수</label>
+            <select id="playerCount">
+                <option value="1">1명</option>
+                <option value="2">2명</option>
+                <option value="3">3명</option>
+                <option value="4">4명</option>
+                <option value="5">5명</option>
+            </select>
 
-    <div class="logo">
-        NEMESIS
-    </div>
+            <button id="startButton" class="primary-button">
+                목표 2장씩 배정 시작
+            </button>
+        </div>
+    </section>
 
-    <div class="subtitle">
-        CUSTOM OBJECTIVES
-    </div>
+    <!-- QR 코드 화면 -->
+    <section id="qrScreen" class="screen hidden">
+        <div class="card qr-card">
+            <div class="section-kicker">OBJECTIVE DISTRIBUTION</div>
+            <h2>개인 목표 QR 코드</h2>
 
-    <div class="card">
+            <p id="currentPlayer" class="description qr-current-player">
+                플레이어 1
+            </p>
 
-        <h2>
-            게임 준비
-        </h2>
+            <div id="qrcode" class="qr-container"></div>
 
-        <p class="description">
-            플레이어 수만큼 개인 목표를 무작위로 배정합니다.
-        </p>
+            <p class="qr-instruction">
+                이 QR 코드를 해당 플레이어의 휴대폰으로 스캔하세요.<br>
+                <strong>두 개의 목표</strong>가 전달됩니다.
+            </p>
 
-        <label for="playerCount">
-            플레이어 수
-        </label>
+            <p id="qrPlayerNumber" class="qr-player-number">PLAYER 1</p>
+            <p id="progressText" class="progress-text">1 / 1</p>
 
-        <select id="playerCount">
-            <option value="1">1명</option>
-            <option value="2">2명</option>
-            <option value="3">3명</option>
-            <option value="4">4명</option>
-            <option value="5">5명</option>
-        </select>
+            <button id="nextPlayerButton" class="primary-button">
+                다음 플레이어 →
+            </button>
+        </div>
+    </section>
 
-        <button
-            id="startButton"
-            class="primary-button"
-        >
-            목표 배정 시작
-        </button>
+    <!-- 개인 목표 화면 -->
+    <section id="objectiveScreen" class="screen hidden">
+        <!-- app.js가 실제 목표 2개 화면을 생성합니다. -->
+    </section>
 
-    </div>
+    <!-- QR 스캐너 화면 -->
+    <section id="scannerScreen" class="screen hidden">
+        <div class="card scanner-card">
+            <div class="section-kicker">SCAN OBJECTIVE</div>
+            <h2>QR 코드 스캔</h2>
+            <p class="description">
+                자신의 개인 목표 QR 코드를 스캔하세요.
+            </p>
+            <div id="reader" class="reader"></div>
+        </div>
+    </section>
 
-</section>
-
-
-<!-- =========================================
-     QR 코드 화면
-========================================== -->
-
-<section
-    id="qrScreen"
-    class="screen hidden"
->
-
-    <div class="card">
-
-        <h2>
-            개인 목표 QR 코드
-        </h2>
-
-        <p
-            id="currentPlayer"
-            class="description"
-        >
-            플레이어 1
-        </p>
-
-        <div
-            id="qrcode"
-            class="qr-container"
-        ></div>
-
-        <p
-            id="qrPlayerNumber"
-            class="qr-player-number"
-        >
-            플레이어 1
-        </p>
-
-        <p
-            id="progressText"
-            class="progress-text"
-        >
-            1 / 1
-        </p>
-
-<button
-    id="nextPlayerButton"
-    class="primary-button"
->
-    다음 플레이어
-</button>
+    <!-- 오류 화면 -->
+    <section id="errorScreen" class="screen hidden">
+        <div class="card error-card">
+            <div class="section-kicker">ERROR</div>
+            <h2>오류</h2>
+            <p id="errorMessage" class="error-message">
+                QR 코드를 처리할 수 없습니다.
+            </p>
+            <button id="errorBackButton" class="primary-button">
+                처음으로
+            </button>
+        </div>
+    </section>
 
 </div>
-
-
-</section>
-
-
-<!-- =========================================
-     개인 목표 화면
-========================================== -->
-
-<section
-    id="objectiveScreen"
-    class="screen hidden"
->
-
-    <div class="card objective-card">
-
-        <div
-            id="objectivePlayer"
-            class="objective-player"
-        >
-            PLAYER 1
-        </div>
-
-        <div class="objective-image-container">
-
-            <img
-                id="objectiveImage"
-                class="objective-image"
-                alt="개인 목표"
-            >
-
-            <div
-                id="objectiveImagePlaceholder"
-                class="objective-image-placeholder"
-            >
-                개인 목표
-            </div>
-
-        </div>
-
-        <h2
-            id="objectiveTitle"
-            class="objective-title"
-        >
-        </h2>
-
-        <div
-            id="objectiveText"
-            class="objective-text"
-        >
-        </div>
-
-        <button
-            id="hideObjectiveButton"
-            class="primary-button"
-        >
-            목표 숨기기
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     QR 스캐너 화면
-========================================== -->
-
-<section
-    id="scannerScreen"
-    class="screen hidden"
->
-
-    <div class="card">
-
-        <h2>
-            QR 코드 스캔
-        </h2>
-
-        <p class="description">
-            개인 목표 QR 코드를 스캔하세요.
-        </p>
-
-        <div
-            id="reader"
-            class="reader"
-        ></div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     오류 화면
-========================================== -->
-
-<section
-    id="errorScreen"
-    class="screen hidden"
->
-
-    <div class="card">
-
-        <h2>
-            오류
-        </h2>
-
-        <p
-            id="errorMessage"
-            class="error-message"
-        >
-            QR 코드를 처리할 수 없습니다.
-        </p>
-
-        <button
-            id="errorBackButton"
-            class="primary-button"
-        >
-            처음으로
-        </button>
-
-    </div>
-
-</section>
-
-</div>
-
 </body>
-
 </html>
