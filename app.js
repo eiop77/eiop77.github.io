@@ -43,7 +43,7 @@ const OBJECTIVES = [
     },
     {
         id: 4,
-        title: "프로메테우스 엘리자베스 쇼 박사",
+        title: "[프로메테우스] 엘리자베스 쇼 박사",
         image: "images/4.png",
         text: `
             인간을 만든게 누구고 인트루더는 무엇이고
@@ -248,7 +248,7 @@ const OBJECTIVES = [
     },
     {
         id: 23,
-        title: "프로메테우스 커버넌트 데이빗",
+        title: "[프로메테우스] [커버넌트] 데이빗",
         image: "images/23.png",
         text: `
             당신은 안드로이드입니다.
@@ -282,7 +282,7 @@ const OBJECTIVES = [
     },
     {
         id: 24,
-        title: "로물루스 앤디",
+        title: "[로물루스] 앤디",
         image: "images/24.png",
         text: `
             당신은 안드로이드입니다.
@@ -303,7 +303,7 @@ const OBJECTIVES = [
     },
     {
         id: 25,
-        title: "커버넌트 대니얼스",
+        title: "[커버넌트] 대니얼스",
         image: "images/25.png",
         text: `
             구명정을 통해 지구로 돌아가야 합니다.
