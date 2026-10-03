@@ -910,7 +910,7 @@ function showObjective(data) {
 
         </div>
 
-        <button
+        <button hidden="hidden"
             id="objectiveBackButton"
             class="secondaryButton"
         >
