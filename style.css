@@ -1437,3 +1437,578 @@ button {
         transition-duration: 0.001ms !important;
     }
 }
+
+
+/* =========================================================
+   NEMESIS MAIN / SETUP SCREEN
+   Main page only — QR / Objective / Scanner pages untouched
+   ========================================================= */
+
+#setupScreen {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    isolation: isolate;
+
+    /* 폐쇄된 우주선 내부를 연상시키는 어두운 금속 배경 */
+    background:
+        radial-gradient(
+            ellipse at 50% 18%,
+            rgba(104, 17, 21, 0.12) 0%,
+            transparent 36%
+        ),
+        radial-gradient(
+            ellipse at 50% 105%,
+            rgba(38, 43, 45, 0.10) 0%,
+            transparent 45%
+        ),
+        linear-gradient(
+            180deg,
+            #020304 0%,
+            #07090a 48%,
+            #030405 100%
+        );
+
+    padding: 40px 20px;
+}
+
+/* 우주선 천장/격벽 느낌의 미세한 구조선 */
+#setupScreen::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            transparent calc(50% - 480px),
+            rgba(116, 124, 127, 0.035) calc(50% - 479px),
+            transparent calc(50% - 478px),
+            transparent calc(50% + 478px),
+            rgba(116, 124, 127, 0.035) calc(50% + 479px),
+            transparent calc(50% + 480px)
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 79px,
+            rgba(150, 156, 158, 0.025) 80px
+        );
+
+    pointer-events: none;
+}
+
+/* 중앙의 희미한 경고등/비상조명 */
+#setupScreen::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 8%;
+    left: 50%;
+    width: min(620px, 85vw);
+    height: 1px;
+    transform: translateX(-50%);
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(188, 28, 34, 0.45),
+        transparent
+    );
+
+    box-shadow:
+        0 0 35px rgba(188, 28, 34, 0.08),
+        0 120px 90px rgba(0, 0, 0, 0.8);
+
+    opacity: 0.8;
+}
+
+
+/* ---------------------------------------------------------
+   NEMESIS 로고
+   --------------------------------------------------------- */
+
+#setupScreen .logo {
+    position: relative;
+
+    color: #d8d9d6;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-size: clamp(68px, 13vw, 128px);
+    font-weight: 700;
+    line-height: 0.78;
+    letter-spacing: 0.17em;
+    text-align: center;
+
+    transform: scaleX(0.88);
+
+    text-shadow:
+        0 0 1px rgba(255,255,255,0.45),
+        0 0 28px rgba(180, 185, 184, 0.045),
+        0 12px 40px rgba(0,0,0,0.9);
+
+    /* 금속 표면처럼 아주 미세한 그라데이션 */
+    background: linear-gradient(
+        180deg,
+        #f0f0ec 0%,
+        #bfc1bd 42%,
+        #707574 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: nemesisLogoFlicker 7s infinite;
+}
+
+#setupScreen .logo::before,
+#setupScreen .logo::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: clamp(35px, 9vw, 120px);
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(128, 136, 137, 0.45)
+    );
+}
+
+#setupScreen .logo::before {
+    right: calc(100% + 18px);
+}
+
+#setupScreen .logo::after {
+    left: calc(100% + 18px);
+    transform: scaleX(-1);
+}
+
+
+/* ---------------------------------------------------------
+   CUSTOM OBJECTIVES
+   --------------------------------------------------------- */
+
+#setupScreen .subtitle {
+    position: relative;
+
+    margin-top: 18px;
+    margin-bottom: 42px;
+
+    color: #8d171d;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-size: clamp(12px, 2vw, 16px);
+    font-weight: 600;
+    letter-spacing: 0.52em;
+    text-indent: 0.52em;
+
+    text-shadow:
+        0 0 12px rgba(184, 28, 35, 0.25);
+}
+
+#setupScreen .subtitle::before,
+#setupScreen .subtitle::after {
+    content: "—";
+    margin: 0 13px;
+
+    color: #343a3c;
+    letter-spacing: 0;
+}
+
+
+/* ---------------------------------------------------------
+   메인 설정 패널
+   --------------------------------------------------------- */
+
+#setupScreen .setup-card {
+    position: relative;
+
+    width: min(560px, calc(100vw - 40px));
+    padding: 0;
+
+    border: 1px solid #272c2e;
+    border-radius: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 21, 22, 0.96),
+            rgba(5, 7, 8, 0.98)
+        );
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,0.72),
+        0 0 0 1px rgba(255,255,255,0.015),
+        inset 0 1px 0 rgba(255,255,255,0.025);
+
+    overflow: hidden;
+}
+
+/* 패널 상단 비상 경고선 */
+#setupScreen .setup-card::before {
+    content: "";
+
+    display: block;
+
+    width: 100%;
+    height: 3px;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            #73171c 0,
+            #73171c 14px,
+            #0a0c0d 14px,
+            #0a0c0d 28px
+        );
+
+    opacity: 0.9;
+}
+
+/* 패널 모서리 */
+#setupScreen .setup-card::after {
+    content: "";
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    width: 85px;
+    height: 85px;
+
+    border-right: 1px solid rgba(137, 145, 147, 0.14);
+    border-bottom: 1px solid rgba(137, 145, 147, 0.14);
+
+    pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------
+   패널 내부
+   --------------------------------------------------------- */
+
+#setupScreen .setup-card h2 {
+    position: relative;
+
+    margin: 0;
+    padding: 31px 34px 15px;
+
+    color: #d5d7d4;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-size: clamp(29px, 5vw, 38px);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+
+    border-bottom: 1px solid #1d2224;
+}
+
+#setupScreen .setup-card h2::before {
+    content: "SYSTEM / CREW CONFIGURATION";
+
+    display: block;
+    margin-bottom: 8px;
+
+    color: #555d60;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+}
+
+
+/* ---------------------------------------------------------
+   설명
+   --------------------------------------------------------- */
+
+#setupScreen .setup-card .description {
+    margin: 0;
+    padding: 22px 34px 27px;
+
+    color: #777f82;
+    font-size: 12px;
+    line-height: 1.9;
+
+    border-bottom: 1px solid #1d2224;
+}
+
+#setupScreen .setup-card .description::before {
+    content: "●";
+
+    margin-right: 8px;
+
+    color: #8d171d;
+    font-size: 7px;
+    vertical-align: 2px;
+
+    text-shadow: 0 0 8px rgba(185,31,38,0.55);
+}
+
+
+/* ---------------------------------------------------------
+   플레이어 수
+   --------------------------------------------------------- */
+
+#setupScreen .setup-card label {
+    display: block;
+
+    margin: 0;
+    padding: 25px 34px 10px;
+
+    color: #6e7679;
+
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+#setupScreen #playerCount {
+    display: block;
+
+    width: calc(100% - 68px);
+    height: 62px;
+    margin: 0 34px 27px;
+
+    padding: 0 18px;
+
+    border: 1px solid #303638;
+    border-radius: 0;
+    outline: none;
+
+    color: #d8dad7;
+    background:
+        linear-gradient(
+            180deg,
+            #090b0c,
+            #050708
+        );
+
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+
+    cursor: pointer;
+
+    appearance: auto;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+#setupScreen #playerCount:hover {
+    border-color: #4a5052;
+    background: #0b0e0f;
+}
+
+#setupScreen #playerCount:focus {
+    border-color: #7e2025;
+
+    box-shadow:
+        0 0 0 1px rgba(126,32,37,0.35),
+        0 0 24px rgba(126,32,37,0.08);
+}
+
+
+/* ---------------------------------------------------------
+   시작 버튼
+   --------------------------------------------------------- */
+
+#setupScreen #startButton {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: calc(100% - 68px);
+    min-height: 64px;
+
+    margin: 0 34px 34px;
+    padding: 0 25px;
+
+    border: 1px solid #7d2025;
+    border-radius: 0;
+
+    color: #e6e7e4;
+
+    background:
+        linear-gradient(
+            180deg,
+            #68171c 0%,
+            #4a1115 100%
+        );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 0 25px rgba(142,25,31,0.08);
+
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+/* 버튼의 스캔라인 */
+#setupScreen #startButton::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 5px,
+            rgba(255,255,255,0.025) 6px
+        );
+
+    pointer-events: none;
+}
+
+#setupScreen #startButton:hover {
+    transform: translateY(-2px);
+
+    border-color: #b52a31;
+
+    background:
+        linear-gradient(
+            180deg,
+            #801b21 0%,
+            #5c1318 100%
+        );
+
+    box-shadow:
+        0 8px 30px rgba(120,22,28,0.24),
+        inset 0 0 20px rgba(255,255,255,0.025);
+}
+
+#setupScreen #startButton:active {
+    transform: translateY(0);
+}
+
+
+/* ---------------------------------------------------------
+   작은 시스템 정보 라인
+   --------------------------------------------------------- */
+
+#setupScreen .setup-card::marker {
+    display: none;
+}
+
+
+/* ---------------------------------------------------------
+   메인 화면 전용 미세한 점멸
+   --------------------------------------------------------- */
+
+@keyframes nemesisLogoFlicker {
+    0%, 92%, 96%, 100% {
+        opacity: 1;
+    }
+
+    93% {
+        opacity: 0.92;
+    }
+
+    94% {
+        opacity: 1;
+    }
+
+    95% {
+        opacity: 0.96;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   모바일
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    #setupScreen {
+        padding: 28px 14px;
+    }
+
+    #setupScreen .logo {
+        font-size: 67px;
+        letter-spacing: 0.12em;
+    }
+
+    #setupScreen .logo::before,
+    #setupScreen .logo::after {
+        width: 25px;
+    }
+
+    #setupScreen .logo::before {
+        right: calc(100% + 9px);
+    }
+
+    #setupScreen .logo::after {
+        left: calc(100% + 9px);
+    }
+
+    #setupScreen .subtitle {
+        margin-top: 14px;
+        margin-bottom: 30px;
+
+        font-size: 10px;
+        letter-spacing: 0.36em;
+    }
+
+    #setupScreen .subtitle::before,
+    #setupScreen .subtitle::after {
+        margin: 0 6px;
+    }
+
+    #setupScreen .setup-card {
+        width: calc(100vw - 28px);
+    }
+
+    #setupScreen .setup-card h2 {
+        padding: 27px 23px 13px;
+        font-size: 31px;
+    }
+
+    #setupScreen .setup-card .description {
+        padding: 19px 23px 23px;
+        font-size: 11px;
+    }
+
+    #setupScreen .setup-card label {
+        padding: 22px 23px 9px;
+    }
+
+    #setupScreen #playerCount {
+        width: calc(100% - 46px);
+        margin-right: 23px;
+        margin-left: 23px;
+    }
+
+    #setupScreen #startButton {
+        width: calc(100% - 46px);
+        margin-right: 23px;
+        margin-left: 23px;
+        margin-bottom: 25px;
+    }
+}
