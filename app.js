@@ -909,12 +909,12 @@ function showObjective(data) {
 
         </div>
 
-        <button hidden="hidden"
-            id="objectiveBackButton"
-            class="secondaryButton"
-        >
-            QR 스캐너로 돌아가기
-        </button>
+        // <button hidden="hidden"
+        //     id="objectiveBackButton"
+        //     class="secondaryButton"
+        // >
+        //     QR 스캐너로 돌아가기
+        // </button>
     `;
 
 
