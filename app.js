@@ -1124,12 +1124,6 @@ function createFinalObjectiveHTML(
             이 목표가 당신의 최종 개인 목표입니다.
         </div>
 
-        <button
-            id="objectiveBackButton"
-            class="secondaryButton"
-        >
-            QR 스캐너로 돌아가기
-        </button>
     `;
 }
 
