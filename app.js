@@ -636,7 +636,7 @@ function showQRCode() {
     ) {
 
         nextPlayerButton.textContent =
-            "✓ 게임 준비 완료";
+                "메인화면으로 돌아가기";
 
     } else {
 
@@ -726,10 +726,8 @@ nextPlayerButton.addEventListener(
         } else {
 
             showScreen(
-                scannerScreen
+                 setupScreen
             );
-
-            startScanner();
         }
     }
 );
