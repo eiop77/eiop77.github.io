@@ -6,11 +6,10 @@
    ========================================================= */
 
 const OBJECTIVES = [
-
     {
         id: 1,
         title: "웨이랜드 직속 해결사",
-        image: "",
+        image: "images/1.png",
         text: `
             CEO는 영생의 목표를 위해 당신에게 미션을 내렸습니다.
 
@@ -18,11 +17,10 @@ const OBJECTIVES = [
             가진 사람 중 하나를 지구로 가져와야 합니다.
         `
     },
-
     {
         id: 2,
         title: "함께하는 동안 싹튼 감정",
-        image: "",
+        image: "images/2.png",
         text: `
             내 다음 후플레이어와 당신은 지구로 돌아가야 합니다.
 
@@ -30,11 +28,10 @@ const OBJECTIVES = [
             후플레이어 시체를 갖고 지구로 돌아가야 합니다.
         `
     },
-
     {
         id: 3,
         title: "웨이랜드 보안 책임자",
-        image: "",
+        image: "images/3.png",
         text: `
             인트루더에 대한 많은 정보가 새어나가선 안됩니다.
 
@@ -44,11 +41,10 @@ const OBJECTIVES = [
             당신은 지구로 돌아가야 합니다.
         `
     },
-
     {
         id: 4,
         title: "프로메테우스 엘리자베스 쇼 박사",
-        image: "",
+        image: "images/4.png",
         text: `
             인간을 만든게 누구고 인트루더는 무엇이고
             어디서 왔는지 알기 위해 떠납니다.
@@ -57,31 +53,28 @@ const OBJECTIVES = [
             당신은 심우주로 가야 합니다.
         `
     },
-
     {
         id: 5,
         title: "인트루더 공포 숭배자",
-        image: "",
+        image: "images/5.png",
         text: `
             여왕이 죽지 않고 우주선이 파괴되지 않아야 합니다.
 
             당신은 지구로 돌아가야 합니다.
         `
     },
-
     {
         id: 6,
         title: "노멀 플레이어",
-        image: "",
+        image: "images/6.png",
         text: `
             생존해서 지구로 돌아가야합니다.
         `
     },
-
     {
         id: 7,
         title: "직접 확인해야하는 수수께끼 인물",
-        image: "",
+        image: "images/7.png",
         text: `
             당신은 가장 마지막으로 좌표를 확인 혹은 수정하거나
             남이 만진 엔진을 수리 액션(고장도 가능) 해야 합니다.
@@ -89,11 +82,10 @@ const OBJECTIVES = [
             지구 혹은 화성으로 가야 합니다.
         `
     },
-
     {
         id: 8,
         title: "우주 상인",
-        image: "",
+        image: "images/8.png",
         text: `
             자의에 의해서든 타인에 의해서든
             당신과의 거래가 2번 이루어져야 합니다.
@@ -103,21 +95,19 @@ const OBJECTIVES = [
             그리고 지구로 돌아가야 합니다.
         `
     },
-
     {
         id: 9,
         title: "파멸의 씨앗",
-        image: "",
+        image: "images/9.png",
         text: `
             인트루더 알을 가진채로
             당신은 지구 혹은 화성에 가야 합니다.
         `
     },
-
     {
         id: 10,
         title: "동면 속 기적적 생존자",
-        image: "",
+        image: "images/10.png",
         text: `
             당신은 반드시 동면을 통해 지구에 도착해야 합니다.
 
@@ -125,11 +115,10 @@ const OBJECTIVES = [
             당신은 스캐너 과정을 생략하고 승리합니다.
         `
     },
-
     {
         id: 11,
         title: "동료애가 깊은 사람",
-        image: "",
+        image: "images/11.png",
         text: `
             당신은 다른 플레이어 1명 이상이 구명정으로 탈출한 후에
             구명정으로 탈출하거나,
@@ -138,32 +127,29 @@ const OBJECTIVES = [
             동면해서 지구로 가야 합니다.
         `
     },
-
     {
         id: 12,
         title: "기억상실증 - 스스로를 믿지 못하는 사람",
-        image: "",
+        image: "images/12.png",
         text: `
             퀘스트 카드 2개를 클리어하거나
 
             2개를 클리어하지 않고 지구로 돌아가야 합니다.
         `
     },
-
     {
         id: 13,
         title: "유능한 기술자",
-        image: "",
+        image: "images/13.png",
         text: `
             고장난 방을 2개 이상 수리 후
             지구로 돌아가야 합니다.
         `
     },
-
     {
         id: 14,
         title: "인트루더 킬러",
-        image: "",
+        image: "images/14.png",
         text: `
             성체 이상 인트루더 1마리 사살 관여 후
             (피해 1 이상 입힘),
@@ -171,11 +157,10 @@ const OBJECTIVES = [
             지구로 귀환.
         `
     },
-
     {
         id: 15,
         title: "지구에 묻어주고 싶은 전우",
-        image: "",
+        image: "images/15.png",
         text: `
             당신이 죽으면 이 미션을 공개합니다.
 
@@ -189,21 +174,19 @@ const OBJECTIVES = [
             죽지 않았다면 지구로 귀환해야 합니다.
         `
     },
-
     {
         id: 16,
         title: "생물학 전문가",
-        image: "",
+        image: "images/16.png",
         text: `
             인트루더 약점 2개 이상 공개된 상태로
             지구 돌아가야 합니다.
         `
     },
-
     {
         id: 17,
         title: "역경 속 유능한 사람",
-        image: "",
+        image: "images/17.png",
         text: `
             다음 중 하나를 수행해야 합니다.
 
@@ -214,11 +197,10 @@ const OBJECTIVES = [
             그리고 지구로 돌아가야 합니다.
         `
     },
-
     {
         id: 18,
         title: "우주선 책임자",
-        image: "",
+        image: "images/18.png",
         text: `
             우주선이 파괴되어선 안되며
             당신은 생존해야 합니다.
@@ -226,11 +208,10 @@ const OBJECTIVES = [
             어느 좌표로 가든 상관 없습니다.
         `
     },
-
     {
         id: 19,
         title: "이기적인 생존자",
-        image: "",
+        image: "images/19.png",
         text: `
             구명정 탈출시 탑승석 한 칸을 비워두고 탈출하거나
 
@@ -238,22 +219,20 @@ const OBJECTIVES = [
             승리합니다.
         `
     },
-
     {
         id: 20,
         title: "장비 전문가",
-        image: "",
+        image: "images/20.png",
         text: `
             아이템 빨강 / 노랑 / 초록 색상 중
             1개 이상 아이템 보유 상태로
             지구로 돌아가야 합니다.
         `
     },
-
     {
         id: 21,
         title: "화성 개척자",
-        image: "",
+        image: "images/21.png",
         text: `
             지구로 귀환해야 하는 목표의 다른 플레이어와
             당신은 화성에 도착시 모두 승리합니다.
@@ -261,20 +240,18 @@ const OBJECTIVES = [
             단, 오염검사는 거쳐야 합니다.
         `
     },
-
     {
         id: 22,
         title: "1급 범죄자",
-        image: "",
+        image: "images/22.png",
         text: `
             당신은 지구 외의 장소에 도착한다면 승리합니다.
         `
     },
-
     {
         id: 23,
         title: "프로메테우스 커버넌트 데이빗",
-        image: "",
+        image: "images/23.png",
         text: `
             당신은 안드로이드입니다.
 
@@ -305,11 +282,10 @@ const OBJECTIVES = [
             이외의 경우, 당신은 패배합니다.
         `
     },
-
     {
         id: 24,
         title: "로물루스 앤디",
-        image: "",
+        image: "images/24.png",
         text: `
             당신은 안드로이드입니다.
 
@@ -327,11 +303,10 @@ const OBJECTIVES = [
             당신이 사망하더라도 당신은 승리합니다.
         `
     },
-
     {
         id: 25,
         title: "커버넌트 대니얼스",
-        image: "",
+        image: "images/25.png",
         text: `
             구명정을 통해 지구로 돌아가야 합니다.
 
@@ -339,7 +314,6 @@ const OBJECTIVES = [
             동면해서 지구로 돌아가야 합니다.
         `
     }
-
 ];
 
 /* =========================================================
