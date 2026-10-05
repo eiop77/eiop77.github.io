@@ -133,7 +133,6 @@ const OBJECTIVES = [
         image: "images/12.png",
         text: `
             퀘스트 카드 2개를 클리어한 상태 혹은
-
             2개를 클리어하지 않은 상태로 지구로 돌아가야 합니다.
         `
     },
